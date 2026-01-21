@@ -124,5 +124,5 @@ This project demonstrates that **CUDA-based parallelism** is an effective way to
 
 ---
 
-*Source: Project documentation provided by the author* :contentReference[oaicite:0]{index=0}
+*Source: Project documentation provided by the author*
 
