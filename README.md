@@ -35,12 +35,16 @@ This project solves that problem by using **GPU-parallelized CUDA kernels** to g
 
 The maze generation workflow is split into modular CUDA kernels. Each step can be tuned or replaced independently.
 
+<img width="810" height="825" alt="image" src="https://github.com/user-attachments/assets/4e016cbb-26c3-44fd-8480-c7163ff1118a" />
+
 ### 1. Random Maze Initialization
 - Generates a random binary grid (`0 = open`, `1 = wall`)
 - Uses GPU-based random number generation
 - Start and end positions are tracked during generation
 
 **Control version:** Uses global memory only (no shared memory)
+
+<img width="397" height="401" alt="image" src="https://github.com/user-attachments/assets/b66e8b21-63c5-4d6b-816e-f5aad4a942c0" />
 
 ---
 
@@ -51,6 +55,8 @@ The maze generation workflow is split into modular CUDA kernels. Each step can b
 
 **Control version:** Operates directly on global memory
 
+<img width="473" height="474" alt="image" src="https://github.com/user-attachments/assets/7fe6f14d-5910-4728-8f55-29f6951c3551" />
+
 ---
 
 ### 3. Feature Injection
@@ -58,12 +64,16 @@ The maze generation workflow is split into modular CUDA kernels. Each step can b
 - Feature templates are stored in shared memory
 - Features are placed at random valid locations
 
+<img width="434" height="435" alt="image" src="https://github.com/user-attachments/assets/933f839f-ec59-4137-8645-c63597fb13ee" />
+
 ---
 
 ### 4. Guaranteed Path Creation
 - Ensures a valid path exists from start to end
 - Opens corridors along selected rows and columns
 - Applies changes selectively to avoid overly open mazes
+
+<img width="527" height="531" alt="image" src="https://github.com/user-attachments/assets/911dfcbc-6123-4d54-95ac-b403e46d4e1d" />
 
 ---
 
@@ -73,6 +83,8 @@ The maze generation workflow is split into modular CUDA kernels. Each step can b
 - Removes unreachable regions to enforce solvability
 - Produces more realistic maze topology
 
+<img width="434" height="430" alt="image" src="https://github.com/user-attachments/assets/bf83323b-1f98-4c3c-9628-ac54eee12eba" />
+
 ---
 
 ### 6. Epsilon Schedule Generation (RL Support)
@@ -81,6 +93,8 @@ The maze generation workflow is split into modular CUDA kernels. Each step can b
 - Initialized once before training begins
 
 **Control version:** No async memory or shared memory usage
+
+<img width="538" height="410" alt="image" src="https://github.com/user-attachments/assets/bc362cb6-6243-4c00-a818-957d7e6ddaec" />
 
 ---
 
